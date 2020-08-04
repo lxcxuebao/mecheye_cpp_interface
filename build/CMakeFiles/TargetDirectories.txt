@@ -1,3 +1,3 @@
-D:/project/MechEye_OpenInterface/build/CMakeFiles/MechEye_OpenInterface.dir
-D:/project/MechEye_OpenInterface/build/CMakeFiles/ALL_BUILD.dir
-D:/project/MechEye_OpenInterface/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/mech-mind-037/Desktop/MechEye_OpenInterface 接口代码和例程V1.2/MechEye_OpenInterface/build/CMakeFiles/MechEye_OpenInterface.dir
+C:/Users/mech-mind-037/Desktop/MechEye_OpenInterface 接口代码和例程V1.2/MechEye_OpenInterface/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/mech-mind-037/Desktop/MechEye_OpenInterface 接口代码和例程V1.2/MechEye_OpenInterface/build/CMakeFiles/ZERO_CHECK.dir

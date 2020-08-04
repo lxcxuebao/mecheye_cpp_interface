@@ -5,76 +5,76 @@
 
 namespace {
 
-double readDouble(const std::string& data, const int pos)
-{
-    if (pos + sizeof(double) > data.size()) return 0;
-    std::string strFromQDataStream(data.data() + pos, sizeof(double));
-    std::string str;
-    str.resize(sizeof(double));
-    for (int i = 0; i < sizeof(double); i++)
-    {
-        str[i] = strFromQDataStream[sizeof(double) - 1 - i];
-    }
-	double v;
-    memcpy(&v, str.c_str(), sizeof(double));
-    return v;
+	double readDouble(const std::string& data, const int pos)
+	{
+		if (pos + sizeof(double) > data.size()) return 0;
+		std::string strFromQDataStream(data.data() + pos, sizeof(double));
+		std::string str;
+		str.resize(sizeof(double));
+		for (int i = 0; i < sizeof(double); i++)
+		{
+			str[i] = strFromQDataStream[sizeof(double) - 1 - i];
+		}
+		double v;
+		memcpy(&v, str.c_str(), sizeof(double));
+		return v;
+	}
+
+	cv::Mat asMat(const std::string& data, size_t offset = 0)
+	{
+		return cv::Mat(data.size() - offset, 1, cv::DataType<uchar>::type,
+			const_cast<char*>((data.data() + offset)));
+	}
+
+	cv::Mat read32FC1Mat(const std::string& data, size_t offset = 0)
+	{
+		if (data.empty()) return {};
+		const double scale = readDouble(data, offset);
+		cv::Mat bias16U =
+			cv::imdecode(asMat(data, sizeof(double) + offset), cv::ImreadModes::IMREAD_ANYDEPTH);
+		cv::Mat bias32F = cv::Mat::zeros(bias16U.size(), CV_32FC1);
+		bias16U.convertTo(bias32F, CV_32FC1);
+		cv::Mat mat32F =
+			bias32F + cv::Mat(bias32F.size(), bias32F.type(), cv::Scalar::all(-Encode32FBias));
+		return scale == 0 ? cv::Mat() : mat32F / scale;
+	}
 }
 
-cv::Mat asMat(const std::string& data, size_t offset = 0)
+cv::Mat CameraClient::captureDepthImg()
 {
-    return cv::Mat(data.size() - offset, 1, cv::DataType<uchar>::type,
-                   const_cast<char*>((data.data() + offset)));
+	const mmind::Response response = sendRequest(NetCamCmd::CaptureImage, ImageType::DEPTH);
+	if (response.imagedepth().empty())
+	{
+		std::cout << "Client depth image is empty!" << std::endl;
+		return {};
+	}
+	return read32FC1Mat(response.imagedepth(), 2);
 }
 
-cv::Mat read32FC1Mat(const std::string& data, size_t offset = 0)
+cv::Mat CameraClient::captureColorImg()
 {
-    if (data.empty()) return {};
-    const double scale = readDouble(data, offset);
-    cv::Mat bias16U =
-        cv::imdecode(asMat(data, sizeof(double) + offset), cv::ImreadModes::IMREAD_ANYDEPTH);
-    cv::Mat bias32F = cv::Mat::zeros(bias16U.size(), CV_32FC1);
-    bias16U.convertTo(bias32F, CV_32FC1);
-    cv::Mat mat32F =
-        bias32F + cv::Mat(bias32F.size(), bias32F.type(), cv::Scalar::all(-Encode32FBias));
-    return scale == 0 ? cv::Mat() : mat32F / scale;
-}
-}
-
-cv::Mat CameraClient::captureDepthImg() 
-{
-    const mmind::Response response = sendRequest(NetCamCmd::CaptureImage, ImageType::DEPTH);
-    if (response.imagedepth().empty())
-    {
-        std::cout << "Client depth image is empty!" << std::endl;
-        return {};
-    }
-    return read32FC1Mat(response.imagedepth(), 2);
-}
-
-cv::Mat CameraClient::captureColorImg() 
-{
-    /*std::string error = setCameraParameter("camera2DExpTime", expTime);*/
-    const mmind::Response response = sendRequest(NetCamCmd::CaptureImage, ImageType::COLOR);
-    if (response.imagergb().empty())
-    {
-        std::cout << "Client color image is empty!" << std::endl;
-        return {};
-    }
-    return cv::imdecode(asMat(response.imagergb()), cv::ImreadModes::IMREAD_COLOR);
+	/*std::string error = setCameraParameter("camera2DExpTime", expTime);*/
+	const mmind::Response response = sendRequest(NetCamCmd::CaptureImage, ImageType::COLOR);
+	if (response.imagergb().empty())
+	{
+		std::cout << "Client color image is empty!" << std::endl;
+		return {};
+	}
+	return cv::imdecode(asMat(response.imagergb()), cv::ImreadModes::IMREAD_COLOR);
 }
 
 pcl::PointCloud<pcl::PointXYZ> CameraClient::capturePointCloud(const CameraIntri& intri)
 {
-    cv::Mat depth = captureDepthImg();
-    return PointCloudTools::getCloudFromDepth(depth, intri);
+	cv::Mat depth = captureDepthImg();
+	return PointCloudTools::getCloudFromDepth(depth, intri);
 }
 
 CameraIntri CameraClient::getCameraIntri()
 {
 	const mmind::Response response = sendRequest(NetCamCmd::GetCameraIntri, 0);
 	std::cout << "Camera intrinsics: " << std::endl
-			  << response.camintri() << std::endl;
-	
+		<< response.camintri() << std::endl;
+
 	const auto start = response.camintri().find_last_of("[");
 	const auto end = response.camintri().find_last_of("]");
 	if (start == std::string::npos || end == std::string::npos || end < start)
@@ -101,9 +101,9 @@ CameraIntri CameraClient::getCameraIntri()
 
 	std::cout.precision(17);
 	std::cout << "fx = " << intri.fx << std::endl
-			  << "fy = " << intri.fy << std::endl
-			  << "u = " << intri.u << std::endl
-			  << "v = " << intri.v << std::endl;
+		<< "fy = " << intri.fy << std::endl
+		<< "u = " << intri.u << std::endl
+		<< "v = " << intri.v << std::endl;
 
 	return intri;
 }
@@ -123,7 +123,7 @@ std::string CameraClient::getCameraVersion()
 	return  getCameraStatus().version();
 }
 
-std::string CameraClient::getParameter(std::string paraName, std::string & error)
+std::string CameraClient::getParameter(std::string paraName, std::string& error)
 {
 	return getCameraParameter(paraName, error);
 }
@@ -166,10 +166,10 @@ std::string CameraClient::setCameraParameter(const std::string& propertyName, do
 
 mmind::Response CameraClient::sendRequest(int command, double value)
 {
-    mmind::Request request;
-    request.set_command(command);
-    request.set_valuedouble(value);
-    return sendReq<mmind::Response>(request);
+	mmind::Request request;
+	request.set_command(command);
+	request.set_valuedouble(value);
+	return sendReq<mmind::Response>(request);
 }
 
 mmind::Response CameraClient::sendRequest(int command, const std::string& value)
