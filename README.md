@@ -1,13 +1,10 @@
 # Mech-Eye Interface
-----------------------------
 Official C++ interface for Mech-Eye cameras.
 ## Prerequisites
------------------------
 In Order to use this interface you will need the following Prerequisites installed:
 1. [Cmake](https://cmake.org/) -Version > 3.7 is required.
 2. [Visual Studio](https://visualstudio.microsoft.com/) -Version > 2015 is recommended.
 ## Using the MechEye_OpenInterface
-------------------------------------------
 ### Configure the project
 Run Cmake and modify the paths of the include and libary
 ### Connect to the camera 
