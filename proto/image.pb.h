@@ -150,6 +150,18 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
+  // repeated double mergeMatrix = 3;
+  int mergematrix_size() const;
+  void clear_mergematrix();
+  static const int kMergeMatrixFieldNumber = 3;
+  double mergematrix(int index) const;
+  void set_mergematrix(int index, double value);
+  void add_mergematrix(double value);
+  const ::google::protobuf::RepeatedField< double >&
+      mergematrix() const;
+  ::google::protobuf::RepeatedField< double >*
+      mutable_mergematrix();
+
   // string valueString = 4;
   void clear_valuestring();
   static const int kValueStringFieldNumber = 4;
@@ -180,6 +192,8 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< double > mergematrix_;
+  mutable int _mergematrix_cached_byte_size_;
   ::google::protobuf::internal::ArenaStringPtr valuestring_;
   double valuedouble_;
   ::google::protobuf::int32 command_;
@@ -339,6 +353,20 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_imageir();
   void set_allocated_imageir(::std::string* imageir);
 
+  // bytes imageGrating = 6;
+  void clear_imagegrating();
+  static const int kImageGratingFieldNumber = 6;
+  const ::std::string& imagegrating() const;
+  void set_imagegrating(const ::std::string& value);
+  #if LANG_CXX11
+  void set_imagegrating(::std::string&& value);
+  #endif
+  void set_imagegrating(const char* value);
+  void set_imagegrating(const void* value, size_t size);
+  ::std::string* mutable_imagegrating();
+  ::std::string* release_imagegrating();
+  void set_allocated_imagegrating(::std::string* imagegrating);
+
   // string camIntri = 7;
   void clear_camintri();
   static const int kCamIntriFieldNumber = 7;
@@ -353,6 +381,20 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_camintri();
   void set_allocated_camintri(::std::string* camintri);
 
+  // string offsetParams = 8;
+  void clear_offsetparams();
+  static const int kOffsetParamsFieldNumber = 8;
+  const ::std::string& offsetparams() const;
+  void set_offsetparams(const ::std::string& value);
+  #if LANG_CXX11
+  void set_offsetparams(::std::string&& value);
+  #endif
+  void set_offsetparams(const char* value);
+  void set_offsetparams(const char* value, size_t size);
+  ::std::string* mutable_offsetparams();
+  ::std::string* release_offsetparams();
+  void set_allocated_offsetparams(::std::string* offsetparams);
+
   // string cameraStatus = 9;
   void clear_camerastatus();
   static const int kCameraStatusFieldNumber = 9;
@@ -366,6 +408,34 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* mutable_camerastatus();
   ::std::string* release_camerastatus();
   void set_allocated_camerastatus(::std::string* camerastatus);
+
+  // bytes stereoImages = 10;
+  void clear_stereoimages();
+  static const int kStereoImagesFieldNumber = 10;
+  const ::std::string& stereoimages() const;
+  void set_stereoimages(const ::std::string& value);
+  #if LANG_CXX11
+  void set_stereoimages(::std::string&& value);
+  #endif
+  void set_stereoimages(const char* value);
+  void set_stereoimages(const void* value, size_t size);
+  ::std::string* mutable_stereoimages();
+  ::std::string* release_stereoimages();
+  void set_allocated_stereoimages(::std::string* stereoimages);
+
+  // string remapParams = 12;
+  void clear_remapparams();
+  static const int kRemapParamsFieldNumber = 12;
+  const ::std::string& remapparams() const;
+  void set_remapparams(const ::std::string& value);
+  #if LANG_CXX11
+  void set_remapparams(::std::string&& value);
+  #endif
+  void set_remapparams(const char* value);
+  void set_remapparams(const char* value, size_t size);
+  ::std::string* mutable_remapparams();
+  ::std::string* release_remapparams();
+  void set_allocated_remapparams(::std::string* remapparams);
 
   // string parameterValue = 13;
   void clear_parametervalue();
@@ -401,6 +471,12 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::int32 command() const;
   void set_command(::google::protobuf::int32 value);
 
+  // bool isLowBrightness = 11;
+  void clear_islowbrightness();
+  static const int kIsLowBrightnessFieldNumber = 11;
+  bool islowbrightness() const;
+  void set_islowbrightness(bool value);
+
   // @@protoc_insertion_point(class_scope:mmind.Response)
  private:
 
@@ -409,11 +485,16 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::internal::ArenaStringPtr imagergb_;
   ::google::protobuf::internal::ArenaStringPtr imagedepth_;
   ::google::protobuf::internal::ArenaStringPtr imageir_;
+  ::google::protobuf::internal::ArenaStringPtr imagegrating_;
   ::google::protobuf::internal::ArenaStringPtr camintri_;
+  ::google::protobuf::internal::ArenaStringPtr offsetparams_;
   ::google::protobuf::internal::ArenaStringPtr camerastatus_;
+  ::google::protobuf::internal::ArenaStringPtr stereoimages_;
+  ::google::protobuf::internal::ArenaStringPtr remapparams_;
   ::google::protobuf::internal::ArenaStringPtr parametervalue_;
   ::google::protobuf::internal::ArenaStringPtr error_;
   ::google::protobuf::int32 command_;
+  bool islowbrightness_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_image_2eproto::TableStruct;
 };
@@ -454,6 +535,36 @@ inline void Request::set_valuedouble(double value) {
   
   valuedouble_ = value;
   // @@protoc_insertion_point(field_set:mmind.Request.valueDouble)
+}
+
+// repeated double mergeMatrix = 3;
+inline int Request::mergematrix_size() const {
+  return mergematrix_.size();
+}
+inline void Request::clear_mergematrix() {
+  mergematrix_.Clear();
+}
+inline double Request::mergematrix(int index) const {
+  // @@protoc_insertion_point(field_get:mmind.Request.mergeMatrix)
+  return mergematrix_.Get(index);
+}
+inline void Request::set_mergematrix(int index, double value) {
+  mergematrix_.Set(index, value);
+  // @@protoc_insertion_point(field_set:mmind.Request.mergeMatrix)
+}
+inline void Request::add_mergematrix(double value) {
+  mergematrix_.Add(value);
+  // @@protoc_insertion_point(field_add:mmind.Request.mergeMatrix)
+}
+inline const ::google::protobuf::RepeatedField< double >&
+Request::mergematrix() const {
+  // @@protoc_insertion_point(field_list:mmind.Request.mergeMatrix)
+  return mergematrix_;
+}
+inline ::google::protobuf::RepeatedField< double >*
+Request::mutable_mergematrix() {
+  // @@protoc_insertion_point(field_mutable_list:mmind.Request.mergeMatrix)
+  return &mergematrix_;
 }
 
 // string valueString = 4;
@@ -755,6 +866,59 @@ Response::mutable_cameraids() {
   return &cameraids_;
 }
 
+// bytes imageGrating = 6;
+inline void Response::clear_imagegrating() {
+  imagegrating_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Response::imagegrating() const {
+  // @@protoc_insertion_point(field_get:mmind.Response.imageGrating)
+  return imagegrating_.GetNoArena();
+}
+inline void Response::set_imagegrating(const ::std::string& value) {
+  
+  imagegrating_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:mmind.Response.imageGrating)
+}
+#if LANG_CXX11
+inline void Response::set_imagegrating(::std::string&& value) {
+  
+  imagegrating_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:mmind.Response.imageGrating)
+}
+#endif
+inline void Response::set_imagegrating(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  imagegrating_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:mmind.Response.imageGrating)
+}
+inline void Response::set_imagegrating(const void* value, size_t size) {
+  
+  imagegrating_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:mmind.Response.imageGrating)
+}
+inline ::std::string* Response::mutable_imagegrating() {
+  
+  // @@protoc_insertion_point(field_mutable:mmind.Response.imageGrating)
+  return imagegrating_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Response::release_imagegrating() {
+  // @@protoc_insertion_point(field_release:mmind.Response.imageGrating)
+  
+  return imagegrating_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Response::set_allocated_imagegrating(::std::string* imagegrating) {
+  if (imagegrating != NULL) {
+    
+  } else {
+    
+  }
+  imagegrating_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), imagegrating);
+  // @@protoc_insertion_point(field_set_allocated:mmind.Response.imageGrating)
+}
+
 // string camIntri = 7;
 inline void Response::clear_camintri() {
   camintri_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -808,6 +972,59 @@ inline void Response::set_allocated_camintri(::std::string* camintri) {
   // @@protoc_insertion_point(field_set_allocated:mmind.Response.camIntri)
 }
 
+// string offsetParams = 8;
+inline void Response::clear_offsetparams() {
+  offsetparams_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Response::offsetparams() const {
+  // @@protoc_insertion_point(field_get:mmind.Response.offsetParams)
+  return offsetparams_.GetNoArena();
+}
+inline void Response::set_offsetparams(const ::std::string& value) {
+  
+  offsetparams_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:mmind.Response.offsetParams)
+}
+#if LANG_CXX11
+inline void Response::set_offsetparams(::std::string&& value) {
+  
+  offsetparams_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:mmind.Response.offsetParams)
+}
+#endif
+inline void Response::set_offsetparams(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  offsetparams_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:mmind.Response.offsetParams)
+}
+inline void Response::set_offsetparams(const char* value, size_t size) {
+  
+  offsetparams_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:mmind.Response.offsetParams)
+}
+inline ::std::string* Response::mutable_offsetparams() {
+  
+  // @@protoc_insertion_point(field_mutable:mmind.Response.offsetParams)
+  return offsetparams_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Response::release_offsetparams() {
+  // @@protoc_insertion_point(field_release:mmind.Response.offsetParams)
+  
+  return offsetparams_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Response::set_allocated_offsetparams(::std::string* offsetparams) {
+  if (offsetparams != NULL) {
+    
+  } else {
+    
+  }
+  offsetparams_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), offsetparams);
+  // @@protoc_insertion_point(field_set_allocated:mmind.Response.offsetParams)
+}
+
 // string cameraStatus = 9;
 inline void Response::clear_camerastatus() {
   camerastatus_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -859,6 +1076,126 @@ inline void Response::set_allocated_camerastatus(::std::string* camerastatus) {
   }
   camerastatus_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), camerastatus);
   // @@protoc_insertion_point(field_set_allocated:mmind.Response.cameraStatus)
+}
+
+// bytes stereoImages = 10;
+inline void Response::clear_stereoimages() {
+  stereoimages_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Response::stereoimages() const {
+  // @@protoc_insertion_point(field_get:mmind.Response.stereoImages)
+  return stereoimages_.GetNoArena();
+}
+inline void Response::set_stereoimages(const ::std::string& value) {
+  
+  stereoimages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:mmind.Response.stereoImages)
+}
+#if LANG_CXX11
+inline void Response::set_stereoimages(::std::string&& value) {
+  
+  stereoimages_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:mmind.Response.stereoImages)
+}
+#endif
+inline void Response::set_stereoimages(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  stereoimages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:mmind.Response.stereoImages)
+}
+inline void Response::set_stereoimages(const void* value, size_t size) {
+  
+  stereoimages_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:mmind.Response.stereoImages)
+}
+inline ::std::string* Response::mutable_stereoimages() {
+  
+  // @@protoc_insertion_point(field_mutable:mmind.Response.stereoImages)
+  return stereoimages_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Response::release_stereoimages() {
+  // @@protoc_insertion_point(field_release:mmind.Response.stereoImages)
+  
+  return stereoimages_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Response::set_allocated_stereoimages(::std::string* stereoimages) {
+  if (stereoimages != NULL) {
+    
+  } else {
+    
+  }
+  stereoimages_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), stereoimages);
+  // @@protoc_insertion_point(field_set_allocated:mmind.Response.stereoImages)
+}
+
+// bool isLowBrightness = 11;
+inline void Response::clear_islowbrightness() {
+  islowbrightness_ = false;
+}
+inline bool Response::islowbrightness() const {
+  // @@protoc_insertion_point(field_get:mmind.Response.isLowBrightness)
+  return islowbrightness_;
+}
+inline void Response::set_islowbrightness(bool value) {
+  
+  islowbrightness_ = value;
+  // @@protoc_insertion_point(field_set:mmind.Response.isLowBrightness)
+}
+
+// string remapParams = 12;
+inline void Response::clear_remapparams() {
+  remapparams_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Response::remapparams() const {
+  // @@protoc_insertion_point(field_get:mmind.Response.remapParams)
+  return remapparams_.GetNoArena();
+}
+inline void Response::set_remapparams(const ::std::string& value) {
+  
+  remapparams_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:mmind.Response.remapParams)
+}
+#if LANG_CXX11
+inline void Response::set_remapparams(::std::string&& value) {
+  
+  remapparams_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:mmind.Response.remapParams)
+}
+#endif
+inline void Response::set_remapparams(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  remapparams_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:mmind.Response.remapParams)
+}
+inline void Response::set_remapparams(const char* value, size_t size) {
+  
+  remapparams_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:mmind.Response.remapParams)
+}
+inline ::std::string* Response::mutable_remapparams() {
+  
+  // @@protoc_insertion_point(field_mutable:mmind.Response.remapParams)
+  return remapparams_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Response::release_remapparams() {
+  // @@protoc_insertion_point(field_release:mmind.Response.remapParams)
+  
+  return remapparams_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Response::set_allocated_remapparams(::std::string* remapparams) {
+  if (remapparams != NULL) {
+    
+  } else {
+    
+  }
+  remapparams_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), remapparams);
+  // @@protoc_insertion_point(field_set_allocated:mmind.Response.remapParams)
 }
 
 // string parameterValue = 13;

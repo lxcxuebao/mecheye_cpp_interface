@@ -9,6 +9,7 @@ enum ImageType {
 
 enum NetCamCmd {
 	CaptureImage = 0,
+    CaptureGratingImage = 8,
 	GetCameraIntri = 11,
 	GetCameraStatus = 19,
 	SetCameraParameter = 25,

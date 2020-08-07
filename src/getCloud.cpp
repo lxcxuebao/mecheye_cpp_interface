@@ -18,7 +18,9 @@ int sample::getPointCloud()
 		<< "Version: " << camera.getCameraVersion() << std::endl; //get and print some information about camera device
 
 	const CameraIntri intri = camera.getCameraIntri(); //get intrinsic parameter of the camera
-	const pcl::PointCloud<pcl::PointXYZ> cloud = camera.capturePointCloud(intri); //calculate point cloud and store in pcl::PointCloud
+	const pcl::PointCloud<pcl::PointXYZ> cloud = camera.capturePointCloud(); //calculate point cloud and store in pcl::PointCloud
 	PointCloudTools::savePointCloud("D:/test/cloud.ply", cloud); //save point cloud on the disk
+	const pcl::PointCloud<pcl::PointXYZRGB> rgbCloud = camera.captureRgbPointCloud();
+	PointCloudTools::saveRgbPointCloud("D:/test/rgbCloud.ply", rgbCloud);
 	return 0;
 }
