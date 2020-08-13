@@ -53,23 +53,7 @@ namespace
 			bias32F + cv::Mat(bias32F.size(), bias32F.type(), cv::Scalar::all(-Encode32FBias));
 		return scale == 0 ? cv::Mat() : mat32F / scale;
 	}
-	int writeTotxt(cv::Mat mat)
-	{
-		std::ofstream out("D:\\c++.txt");
-		if (out.is_open())
-			for (int i = 0; i < mat.rows; i++)
-			{
-				for (int j = 0; j < mat.cols; j++)
-				{
-					out << mat.at<cv::Vec3f>(i, j)[0]<<" ";
-					out << mat.at<cv::Vec3f>(i, j)[1]<<" ";
-					out << mat.at<cv::Vec3f>(i, j)[2]<<" ";
-				}
-				out << "\n";
-			}
-		out.close();
-		return 0;
-	}
+	
 	cv::Mat read32FC3Mat(const std::string& data)
 	{
 		if (data.empty()) return cv::Mat();
@@ -82,8 +66,8 @@ namespace
 		cv::Mat depth32F =
 			bias32F + cv::Mat(bias32F.size(), bias32F.type(), cv::Scalar::all(-Encode32FBias));
 		cv::Mat rel = depth32F / scale;	
-		std::cout << scale << std::endl;
-		writeTotxt(rel);
+		//std::cout << scale << std::endl;
+		//writeTotxt(rel);
 		/*cv::imwrite("D:\\1.png", bias16UC3);
 		cv::imwrite("D:\\2.png", bias32F);*/
 		//cv::imwrite("D:\\3.png", rel);
