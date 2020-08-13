@@ -24,7 +24,7 @@ pcl::PointCloud<pcl::PointXYZ> PointCloudTools::getCloudFromDepth(cv::Mat& depth
 		{
 			cloud.at(c, r) = p;
 		}
-	});
+		});
 	return cloud;
 }
 
@@ -58,50 +58,50 @@ pcl::PointCloud<pcl::PointXYZRGB> PointCloudTools::getRgbCloudFromDepth(cv::Mat&
 			pColor.b = color.at<cv::Vec3b>(r, c)[0];
 			rgbCloud.at(c, r) = pColor;
 		}
-	});
+		});
 	return rgbCloud;
 }
 
 pcl::PointCloud<pcl::PointXYZ> PointCloudTools::getCloudFromDepthC3(cv::Mat& depth)
 {
-    if (depth.empty()) {
-        std::cout << "Depth image is empty." << std::endl;
-        return {};
-    }
-    if (depth.depth() != CV_32F) {
-        std::cout << "Depth image data type is wrong : " << depth.depth() << std::endl;
-        return {};
-    }
-    pcl::PointCloud<pcl::PointXYZ> pointCloud(depth.cols, depth.rows);
-    for (int r = 0; r < depth.rows; r++) {
-        for (int c = 0; c < depth.cols; c++) {
-            const float positionX = depth.at<cv::Vec3f>(r, c)[0];
-            const float positionY = depth.at<cv::Vec3f>(r, c)[1];
-            const float positionZ = depth.at<cv::Vec3f>(r, c)[2];
-            if (positionZ > 1) {
-                pcl::PointXYZ p;
-                p.x = 0.001f * positionX;
-                p.y = 0.001f * positionY;
-                p.z = 0.001f * positionZ;
-                pointCloud.at(c, r) = p;
-            }
-        }
-    }
-    return pointCloud;
+	if (depth.empty()) {
+		std::cout << "Depth image is empty." << std::endl;
+		return {};
+	}
+	if (depth.depth() != CV_32F) {
+		std::cout << "Depth image data type is wrong : " << depth.depth() << std::endl;
+		return {};
+	}
+	pcl::PointCloud<pcl::PointXYZ> pointCloud(depth.cols, depth.rows);
+	for (int r = 0; r < depth.rows; r++) {
+		for (int c = 0; c < depth.cols; c++) {
+			const float positionX = depth.at<cv::Vec3f>(r, c)[0];
+			const float positionY = depth.at<cv::Vec3f>(r, c)[1];
+			const float positionZ = depth.at<cv::Vec3f>(r, c)[2];
+			if (positionZ > 1) {
+				pcl::PointXYZ p;
+				p.x = 0.001f * positionX;
+				p.y = 0.001f * positionY;
+				p.z = 0.001f * positionZ;
+				pointCloud.at(c, r) = p;
+			}
+		}
+	}
+	return pointCloud;
 }
 
 pcl::PointCloud<pcl::PointXYZRGB> PointCloudTools::getRgbCloudFromDepthC3(cv::Mat& depth,
-                                                                          const cv::Mat& color)
+	const cv::Mat& color)
 {
-    if (depth.empty() || color.empty()) {
-        std::cout << "Input image is empty." << std::endl;
-        return {};
-    }
-    if (depth.depth() != CV_32F) {
-        std::cout << "Depth image data type is wrong : " << depth.depth() << std::endl;
-        return {};
-    }
-    pcl::PointCloud<pcl::PointXYZRGB> rgbCloud(depth.cols, depth.rows);
+	if (depth.empty() || color.empty()) {
+		std::cout << "Input image is empty." << std::endl;
+		return {};
+	}
+	if (depth.depth() != CV_32F) {
+		std::cout << "Depth image data type is wrong : " << depth.depth() << std::endl;
+		return {};
+	}
+	pcl::PointCloud<pcl::PointXYZRGB> rgbCloud(depth.cols, depth.rows);
 	for (int r = 0; r < depth.rows; r++) {
 		for (int c = 0; c < depth.cols; c++) {
 			const float positionX = depth.at<cv::Vec3f>(r, c)[0];
@@ -119,11 +119,11 @@ pcl::PointCloud<pcl::PointXYZRGB> PointCloudTools::getRgbCloudFromDepthC3(cv::Ma
 			}
 		}
 	}
-    return rgbCloud;
+	return rgbCloud;
 }
 
 void PointCloudTools::savePointCloud(const std::string& filePath,
-                                     const pcl::PointCloud<pcl::PointXYZ>& cloud)
+	const pcl::PointCloud<pcl::PointXYZ>& cloud)
 {
 	pcl::PLYWriter().write(filePath, cloud);
 }
