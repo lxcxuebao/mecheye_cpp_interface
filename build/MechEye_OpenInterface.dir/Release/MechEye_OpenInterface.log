@@ -1,8 +1,0 @@
-﻿  main.cpp
-d:\dependencies for mecheye_openinterface\include\eigen3\eigen\src/Core/arch/CUDA/Half.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\dependencies for MechEye_OpenInterface\include\pcl/point_traits.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\dependencies for MechEye_OpenInterface\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\dependencies for MechEye_OpenInterface\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\dependencies for MechEye_OpenInterface\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\dependencies for MechEye_OpenInterface\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  MechEye_OpenInterface.vcxproj -> C:\Users\mech-mind-037\Desktop\MechEye_OpenInterface 接口代码和例程V1.2\MechEye_OpenInterface\build\Release\MechEye_OpenInterface.exe
