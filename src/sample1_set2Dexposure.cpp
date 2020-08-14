@@ -8,8 +8,8 @@ int sample::change2DExposureTime()
 	CameraClient camera;
 	std::string error;
 	// Camera ip should be modified to actual ip address.
-	const std::string cameraIp = "192.168.3.167";
-	if (!camera.setIp(cameraIp)) return -1; //return -1 if connection to camera fails
+	const std::string cameraIp = "192.168.3.76";
+	if (!camera.connect(cameraIp)) return -1; //return -1 if connection to camera fails
 	std::string para = "camera2DExpTime"; //parameter name you want to get or set
 	std::cout << "Camera IP: " << camera.getCameraIp() << std::endl
 		<< "Camera ID: " << camera.getCameraId() << std::endl
