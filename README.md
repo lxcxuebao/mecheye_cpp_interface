@@ -107,9 +107,9 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
   * **connect()** : connect to the camera according to its ip address.
   * **captureDepthImg()** : capture a depth image and return it.
   * **captureColorImg()** : capture a color image and return it.
-  * **getCameraIntri() **: get camera's intrinsics.
-  * **getCameraIp() **: get camera's ip address.
-  * **getCameraVersion() **: get camera's version number.
+  * **getCameraIntri()**: get camera's intrinsics.
+  * **getCameraIp()**: get camera's ip address.
+  * **getCameraVersion()**: get camera's version number.
   * **getParameter()** : get the value of a spefic parameter in camera.
   * **setParameter()** : set the value of a spefic parameter in camera.
   * **captureRgbPointCloud()** : get a point cloud as pcl::PointXYZRGB
