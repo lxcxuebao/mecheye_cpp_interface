@@ -1,5 +1,4 @@
 #include "CameraClient.h"
-#include <opencv2/imgcodecs.hpp>
 #include "sample.h"
 
 int sample::change2DExposureTime()
@@ -8,7 +7,7 @@ int sample::change2DExposureTime()
 	CameraClient camera;
 	std::string error;
 	// Camera ip should be modified to actual ip address.
-	const std::string cameraIp = "192.168.3.76";
+	const std::string cameraIp = "192.168.3.146";
 	if (!camera.connect(cameraIp)) return -1; //return -1 if connection to camera fails
 	std::string para = "camera2DExpTime"; //parameter name you want to get or set
 	std::cout << "Camera IP: " << camera.getCameraIp() << std::endl

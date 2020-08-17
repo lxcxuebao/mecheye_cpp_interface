@@ -1,5 +1,4 @@
 #include "CameraClient.h"
-#include <opencv2/imgcodecs.hpp>
 #include "sample.h"
 
 //In this sample, we will show how to change 3D exposure times and every time's  exposure time.
@@ -10,7 +9,7 @@ int sample::getPointCloud()
 	CameraClient camera;
 	std::string error;
 	// Camera ip should be modified to actual ip address.
-	const std::string cameraIp = "192.168.3.76";
+	const std::string cameraIp = "192.168.3.146";
 	if (!camera.connect(cameraIp)) return -1; //return -1 if connection to camera fails
 
 	std::cout << "Camera IP: " << camera.getCameraIp() << std::endl

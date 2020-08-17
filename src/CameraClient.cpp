@@ -2,8 +2,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include "CameraCmd.h"
 #include <regex>
-#include <fstream>
-#include <iostream>
+
 namespace
 {
 	double readDouble(const std::string& data, const int pos)
@@ -66,11 +65,6 @@ namespace
 		cv::Mat depth32F =
 			bias32F + cv::Mat(bias32F.size(), bias32F.type(), cv::Scalar::all(-Encode32FBias));
 		cv::Mat rel = depth32F / scale;	
-		//std::cout << scale << std::endl;
-		//writeTotxt(rel);
-		/*cv::imwrite("D:\\1.png", bias16UC3);
-		cv::imwrite("D:\\2.png", bias32F);*/
-		//cv::imwrite("D:\\3.png", rel);
 		return rel;
 	}
 	
@@ -89,10 +83,7 @@ cv::Mat CameraClient::captureDepthImg()
 
 cv::Mat CameraClient::captureColorImg()
 {
-	/*if (expTime > 0)
-	{
-		std::string error = setCameraParameter("camera2DExpTime", expTime);
-	}*/
+	
 	const mmind::Response response = sendRequest(NetCamCmd::CaptureImage, ImageType::COLOR);
 	if (response.imagergb().empty())
 	{

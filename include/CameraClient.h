@@ -17,7 +17,9 @@ public:
 
 	// Color image type: CV_8UC3
 	// expTime : ms
-	cv::Mat captureColorImg();
+	cv::Mat captureColorImg();  
+
+	
 
 	// Units of point cloud: meter
 	pcl::PointCloud<pcl::PointXYZ> capturePointCloud();
