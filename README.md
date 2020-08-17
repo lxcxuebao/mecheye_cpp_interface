@@ -20,13 +20,15 @@ In Order to use this interface you will need the following Prerequisites install
 
 2. Click the configure and choose the compiler(Visual Studio).
 
-   ![step2](./docs/step2.jpg)
+   ![step2_2](./docs/step2_2.jpg)
 
-3. Extract files from **\Mech-Eye_interface\dependencies\dependencies for MechEye_OpenInterface.7z** and modity the path in the cmake according to the locations of these extracted files.
+3. Extract files from **\Mech-Eye_interface\dependencies\dependencies for MechEye_OpenInterface.7z** and modify the path in the cmake according to the locations of these extracted files.
 
    ![step3](./docs/step3.jpg)
 
 4. Click **Open Project** and project will be opened in Visual Studio.
+
+5. Add all extrated .dll files in Step 3 to System Path.
 
 ## Quick Start
 
@@ -38,7 +40,7 @@ Modify the ip addr according to in every sample_xxx.cpp files and build it.
 
 Then VS will generate an exe file, usually **.\build\Debug\MechEye_OpenInterface.exe**.
 
-Run this program and you will some pictures and point cloud captured by your camera under **D:/test/**.
+Run this program and it will capture pictures and point clouds in the folder **D:/test/**.
 
 ## Project hierarchy
 
