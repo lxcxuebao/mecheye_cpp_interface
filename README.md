@@ -16,15 +16,15 @@ In Order to use this interface you will need the following Prerequisites install
 
 1. Clone the project and select project folder in Cmake. Select where you want to build.
 
-   ![step1](D:\repos\Mech-Eye_interface\docs\step1.jpg)
+   ![step1](./docs/step1.jpg)
 
 2. Click the configure and choose the compiler(Visual Studio).
 
-   ![step2](D:\repos\Mech-Eye_interface\docs\step2.jpg)
+   ![step2](./docs/step2.jpg)
 
 3. Extract files from **\Mech-Eye_interface\dependencies\dependencies for MechEye_OpenInterface.7z** and modity the path in the cmake according to the locations of these extracted files.
 
-   ![step3](D:\repos\Mech-Eye_interface\docs\step3.jpg)
+   ![step3](./docs/step3.jpg)
 
 4. Click **Open Project** and project will be opened in Visual Studio.
 
@@ -34,7 +34,7 @@ Open the Visual Studio.
 
 Modify the ip addr according to in every sample_xxx.cpp files and build it.
 
-![ip](D:\repos\Mech-Eye_interface\docs\ip.jpg)
+![ip](./docs/ip.jpg)
 
 Then VS will generate an exe file, usually **.\build\Debug\MechEye_OpenInterface.exe**.
 
