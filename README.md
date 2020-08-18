@@ -5,12 +5,12 @@ Official C++ interface for Mech-Eye cameras.
 
 This part tells you how to configure and run project on Windows.
 
-### Prerequisites
+#### Prerequisites
 
 In Order to use this interface you will need the following Prerequisites installed:
 1. [Cmake](https://cmake.org/) -Version > 3.7 is required.
 2. [Visual Studio](https://visualstudio.microsoft.com/) -Version > 2015 is recommended.
-### Using CMake to configure 
+#### Using CMake to configure 
 
 
 
@@ -116,6 +116,43 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
   * **setParameter()** : set the value of a spefic parameter in camera.
   * **captureRgbPointCloud()** : get a point cloud as pcl::PointXYZRGB
 
-  
 
- 
+### Intro to samples
+
+The original project provides 2 samples to show how to use APIs. They are included under **.\sample**.
+
+##### sample1_parameter.cpp
+
+This sample mainly shows how to set camera's paramters like exporeture time.
+
+First, we need to know the actual ip address of camera and set it, and then connect to it:
+
+```c++
+CameraClient camera;
+std::string error;
+// Camera ip should be modified to actual ip address.
+const std::string cameraIp = "192.168.3.146";
+if (!camera.connect(cameraIp)) return -1; //return -1 if connection to camera fails
+
+```
+
+Then, we can get some brief info about camera:
+
+```c++
+std::cout << "Camera IP: " << camera.getCameraIp() << std::endl
+		<< "Camera ID: " << camera.getCameraId() << std::endl
+		<< "Version: " << camera.getCameraVersion() << std::endl; //get and print some information about camera device
+```
+
+Finally, we can set and get the value of a specific parameter, in this case, we choose exposure time for color image:
+
+```c++
+std::cout<<camera.setParamater(para, 10)<<std::endl;
+//unit for exposure time is ms, return value of setParameter is string.If successful, the return string will be empty, otherwise it prints error message.
+std::cout<<camera.getParameter(para, error)<<std::endl;
+
+```
+
+##### sample2_ImgAndCloud.cpp
+
+After connected to the camera, the program can capture color images and depth images by camera. And also point clouds. We use PCL to store and process point clouds.

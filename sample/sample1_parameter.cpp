@@ -1,7 +1,7 @@
 #include "CameraClient.h"
 #include "sample.h"
 
-int sample::change2DExposureTime()
+int sample::parameter()
 {
 	//Before we do anything, we always need to connect to camera by ip.
 	CameraClient camera;
