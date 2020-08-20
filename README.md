@@ -34,7 +34,7 @@ In Order to use this interface you will need the following Prerequisites install
 
 Open the Visual Studio.
 
-Modify the ip addr according to in every sample_xxx.cpp files and build it.
+Modify the ip address according to the actual address in every sample_xxx.cpp files and build it.
 
 ![ip](./docs/ip.jpg)
 
