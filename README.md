@@ -34,7 +34,7 @@ In Order to use this interface you will need the following Prerequisites install
 
 Open the Visual Studio.
 
-Modify the ip address according to the actual address in every sample_xxx.cpp files and build it.
+Modify the IP address according to the actual address in every sample_xxx.cpp files and build it.
 
 ![ip](./docs/ip.jpg)
 
@@ -121,9 +121,9 @@ There are two main classes: CameraClient and ZmqClient. CameraClient is subclass
 
   * **getCameraVersion()**: get camera's version number.
 
-  * **getParameter()** : get the value of a spefic parameter in camera.
+  * **getParameter()** : get the value of a specific parameter in camera.
 
-  * **setParameter()** : set the value of a spefic parameter in camera.
+  * **setParameter()** : set the value of a specific parameter in camera.
 
     **Note**：Some parameters cannot be set in this version, they are available in next version. But they can still be set in Mech_eye. Here are all parameters can be set now(You can check them in Mech_eye software):
 
@@ -160,7 +160,7 @@ The original project provides 2 samples to show how to use interfaces. They are 
 
 ##### sample1_parameter.cpp
 
-This sample mainly shows how to set camera's paramters like exporeture time.
+This sample mainly shows how to set camera's paramters like exposure time.
 
 First, we need to know the actual ip address of camera and set it, and then connect:
 
@@ -184,9 +184,9 @@ std::cout << "Camera IP: " << camera.getCameraIp() << std::endl
 Finally, we can set and get the value of a specific parameter, in this case, we choose exposure time for color image:
 
 ```c++
-std::cout<<camera.setParamater(para, 10)<<std::endl;
+std::cout<<camera.setParamater(“camera2DExposureTime”, 10)<<std::endl;
 //unit for exposure time is ms, return value of setParameter is string.If successful, the return string will be empty, otherwise it prints error message.
-std::cout<<camera.getParameter(para, error)<<std::endl;
+std::cout<<camera.getParameter(“camera2DExposureTime”, error)<<std::endl;
 
 ```
 
