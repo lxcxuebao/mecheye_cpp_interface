@@ -52,8 +52,7 @@ Mech-Eye_interface
 ├─ README.md
 ├─ dependencies
 │    └─ dependencies for MechEye_OpenInterface.7z
-├─ docs
-│    ├─ MechEye_openinterface.pdf
+├─ img
 │    ├─ ip.jpg
 │    ├─ step.png
 │    ├─ step1.jpg
